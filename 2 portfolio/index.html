@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=egde">
+    <meta name="=viewport" content="width=device-width,inital-scale=1.0">
+    <title>Document</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet">
+      <link rel="stylesheet" href="color-1.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style-switcher.css">
+    <link
+      rel="stylesheet"
+      href="color-1.css"
+      class="alternate-style"
+      title="color-1"
+      disabled>
+    <link
+      rel="stylesheet"
+      href="color-2.css"
+      class="alternate-style"
+      title="color-2"
+      disabled>
+    <link
+      rel="stylesheet"
+      href="color-3.css"
+      class="alternate-style"
+      title="color-3"
+      disabled>
+    <link
+      rel="stylesheet"
+      href="color-4.css"
+      class="alternate-style"
+      title="color-4"
+      disabled>
+    <link
+      rel="stylesheet"
+      href="color-5.css"
+      class="alternate-style"
+      title="color-5"
+      disabled>
+    
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+  .style-switcher 
+  {
+  position: fixed;
+  right: 0;
+  top: 60px;
+  padding: 15px;
+  width: 200px;
+  border: 2px solid var(--bg-black-50);
+  background: var(--bg-black-100);
+  z-index: 101;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  transform: translateX(100%);
+}
+.style-switcher.open {
+  transform: translateX(-25px);
+}
+
+.style-switcher .s-icon {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  font-size: 20px;
+  background: var(--bg-black-100);
+  color: var(--text-black-900);
+  right: 100%;
+  border: 1px solid var(--bg-black-50);
+  margin-right: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.style-switcher .s-icon i {
+  line-height: 40px;
+}
+
+.style-switcher .day-night {
+  top: 55px;
+}
+
+.style-switcher .style-switcher-toggler {
+  top: 0;
+}
+
+.style-switcher h4 {
+  margin: 0 0 10px;
+  color: var(--text-black-700);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.style-switcher .colors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.style-switcher .colors span {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.style-switcher .color-1 {
+  background: orangered;
+}
+
+.style-switcher .color-2 {
+  background: red;
+}
+
+.style-switcher .color-3 {
+  background: #37b182;
+}
+
+.style-switcher .color-4 {
+  background: #1854b4;
+}
+
+.style-switcher .color-5 {
+  background: #f021b2;
+}
+:root {
+        --bg-black-900: #f2f2fc;
+        --bg-black-100: #fdf9ff;
+        --bg-black-50: #e8dfec;
+        --text-black-900: #302e4d;
+        --text-black-700: #504370;
+      }
+body.dark {
+        --bg-black-900: #151515;
+        --bg-black-100: #222222;
+        --bg-black-50: #393939;
+        --text-black-900: #ffffff;
+        --text-black-700: #e9e9e9;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      body {
+        line-height: 1.5;
+        font-size: 16px;
+        font-family: "poppins" sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        text-decoration: none;
+        box-sizing: border-box;
+      }
+
+      ::before,
+      ::after {
+        box-sizing: border-box;
+      }
+
+      .section {
+        background: var(--bg-black-900);
+        min-height: 100vh;
+        display: block;
+        opacity: 1;
+        padding: 0px 30px;
+        left: 270px;
+        position:fixed;
+        top:0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transition: all 0.3s ease;
+      }
+      .section.back-section{
+        z-index: 1;
+      }
+      .section.active
+      {
+        z-index: 2;
+        opacity: 1;
+        animation: slideSection 1s ease;
+      }
+       @keyframes slideSection{
+        0%{
+          transform: translateX(100%);
+        }
+        1000%{
+          transform: translateX(0%) ;
+        }
+       }
+      .aside {
+        width: 270px;
+        background: var(--bg-black-100);
+        position: fixed;
+        left: 0;
+        top: 0;
+        border-right: 1px solid var(--bg-black-50);
+        z-index: 10;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .logo {
+        position: absolute;
+        top: 50px;
+        font-size: 30px;
+        text-transform: capitalize;
+      }
+
+      .logo a {
+        color: var(--text-black-900);
+        font-weight: 700;
+        padding: 15px 20px;
+        font-size: 30px;
+        letter-spacing: 5px;
+        position: relative;
+      }
+
+      .aside .logo a span {
+        font-family: "Clicker Script", Calibri;
+        font-size: 30px;
+      }
+
+      .aside .logo a::before 
+      {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-bottom: 5px solid orangered;
+        border-left: 5px solid orangered;
+        bottom: 0;
+        left: 0;
+      }
+
+      .logo a::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-top: 5px solid orangered;
+        border-right: 5px solid orangered;
+        top: 0;
+        right: 0;
+      }
+
+      .nav {
+        margin-top: 16px;
+      }
+
+      .nav li {
+        margin-bottom: 20px;
+        display: block;
+        text-align: center;
+      }
+
+      .nav li a {
+        font-size: 16px;
+        font-weight: 600;
+        display: block;
+        border-bottom: 1px solid var(--bg-black-50);
+        color: var(--text-black-900);
+        padding: 5px 15px;
+      }
+
+      .aside .nav li a.active {
+        color: orangered;
+      }
+
+      .aside .nav li a i {
+        margin-right: 15px;
+      }
+
+      .aside .nav-toggler {
+        height: 40px;
+        width: 45px;
+        border: 1px solid var(--bg-black-50);
+        cursor: pointer;
+        position: fixed;
+        left: 300px;
+        top: 20px;
+        border-radius: 5px;
+        background: var(--bg-black-100);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .aside .nav-toggler span {
+        height: 2px;
+        width: 18px;
+        background: orangered;
+        display: inline-block;
+        position: relative;
+      }
+      .aside .nav-toggler span
+      {
+        background-color: transparent;
+      }
+      .aside .nav-toggler span::before {
+        content: "";
+        height: 2px;
+        width: 18px;
+        background: orangered;
+        position: absolute;
+        top: -6px;
+        left: 0;
+      }
+      .aside .nav-toggler.open span::before
+      {
+        transform:rotate(45deg) ;
+        top:0;
+
+       }
+      .aside .nav-toggler span::after {
+        content: "";
+        height: 2px;
+        width: 18px;
+        background: orangered;
+        position: absolute;
+        top: 6px;
+        left: 0;
+      }
+      .aside .nav-toggler.open span::after
+      {
+        transform:rotate(-45deg) ;
+        top:0;
+      }
+
+      .home .home-img {
+        flex: 0 0 40%;
+        max-width: 40%;
+        text-align: center;
+      }
+
+      .padd-15 {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+      .container {
+        max-width: 1100px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -10px;
+        margin-right: -10px;
+        position: relative;
+      }
+
+      .home .home-img img {
+        height: 400px;
+        margin: auto;
+        border-radius: 5px;
+      }
+
+      .home {
+        min-height: 100vh;
+        display: flex;
+        color: var(--text-black-900);
+      }
+
+      .home .home-info {
+        flex: 0 0 60%;
+        max-width: 60%;
+      }
+
+      h3.hello {
+        font-size: 28px;
+        margin: 15px 0;
+      }
+
+      h3.hello span {
+        font-family: "Clicker Script", Candara;
+        font-size: 30px;
+        font-weight: 700;
+        color: orangered;
+        font-style: italic;
+      }
+
+      h3.my-profession {
+        font-size: 30px;
+        margin: 15px 0;
+      }
+
+      .typing {
+        color: orangered;
+      }
+
+      .home-info p {
+        margin-bottom: 70px;
+        font-size: 20px;
+        color: var(--text-black-700);
+      }
+
+      .btn {
+        font-size: 16px;
+        font-weight: 500;
+        padding: 12px 35px;
+        background: orangered;
+        color: white;
+        border-radius: 40px;
+        border: none;
+        display: inline-block;
+        white-space: nowrap;
+        transition: all 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: scale(1.05);
+      }
+
+      .shadow-dark {
+        box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+      }
+
+      .home-img::after {
+        content: '';
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        right: 20px;
+        bottom: -40px;
+        border-bottom: 10px solid orangered;
+        border-right: 10px solid orangered;
+      }
+
+      .home-img::before {
+        content: '';
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        left: -20px;
+        top: -40px;
+        border-top: 10px solid orangered;
+        border-left: 10px solid orangered;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .section .container {
+        padding-top: 60px;
+        padding-bottom: 70px;
+      }
+
+      .section-title {
+        flex: 0 0 1000%;
+        max-width: 100%;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 40px;
+        color: var(--text-black-900);
+        font-weight: 700;
+        position: relative;
+      }
+
+      .section-title h2::before {
+        content: "";
+        height: 4px;
+        background-color: orangered;
+        margin-right: 15px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 50px;
+      }
+
+      .section-title h2::after {
+        content: "";
+        height: 4px;
+        background-color: orangered;
+        margin-right: 15px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 25px;
+        margin-top: 8px;
+      }
+
+      .about .about-content {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .about.about-text {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .about .about-text h3 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        font-weight: 700;
+        color: VAR(--text-black-900);
+      }
+
+      .about-text h3 span {
+        color: orangered;
+      }
+
+      .about-text p {
+        font-size: 16px;
+        line-height: 25px;
+        color: var(--text-black-900);
+      }
+
+      .personal-info {
+        flex: 0 0 50%;
+        max-width: 60%;
+        margin-top: 40px;
+      }
+
+      .skills {
+        flex: 0 0 40%;
+        max-width: 40%;
+        margin-top: 40px;
+      }
+
+      .info-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+
+      .info-item p {
+        font-weight: 600;
+        padding: 10px 0;
+        font-size: 16px;
+        color: var(--text-black-900);
+        border-bottom: 1px solid var(--bg-black-50);
+      }
+
+      .info-item p span {
+        font-weight: 400;
+        color: var(--text-black-700);
+        margin-left: 4px;
+        display: inline-block;
+      }
+
+      .personal-info .button {
+        margin-top: 30px;
+      }
+
+      .personal-info .button .btn {
+        
+        margin-top: 10px;
+      }
+
+      .skills .skill-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .skill-item h5 {
+        line-height: 40px;
+        font-weight: 600;
+        font-size: 16px;
+        color: var(--text-black-900);
+        text-transform: capitalize;
+      }
+
+      .skill-item .progress {
+        background-color: var(--bg-black-50);
+        height: 7px;
+        border-radius: 4px;
+        width: 100%;
+        position: relative;
+      }
+
+      .progress-in {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background-color: orangered;
+        border-radius: 4px;
+      }
+
+      .skill-percent {
+        position: absolute;
+        right: 0;
+        color: var(--text-black-900);
+        top: -40px;
+        font-weight: 400;
+        line-height: 40px;
+      }
+
+      .edcation {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-top: 30px;
+      }
+
+      .hobbies {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-top: 30px;
+      }
+
+      .about-content h3.title {
+        font-size: 24px;
+        margin-bottom: 30px;
+        font-weight: 700;
+        color: var(--text-black-900);
+      }
+
+      .timeline-box {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .timeline {
+        background-color: var(--bg-black-100);
+        padding: 30px 15px;
+        border: 1px solid var(--bg-black-50);
+        border-radius: 10px;
+        width: 100%;
+        position: relative;
+      }
+
+      .timeline .timeline-item {
+        position: relative;
+        padding-left: 37px;
+        padding-bottom: 50px;
+      }
+
+      .timeline .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .timeline .timeline-item:before {
+        content: "";
+        width: 1px;
+        position: absolute;
+        height: 100%;
+        left: 7px;
+        top: 0;
+        background-color: orangered;
+      }
+
+      .timeline .timeline-item .circle-dot {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: orangered;
+      }
+
+      .timeline .timeline-date {
+        font-weight: 400;
+        font-size: 14px;
+        margin-bottom: 12px;
+        color: var(--text-black-700);
+      }
+
+      .timeline .timeline-date .bx {
+        margin-right: 5px;
+      }
+
+      .timeline .timeline-title {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-transform: capitalize;
+        color: var(--text-black-900);
+      }
+
+      .timeline-text {
+        line-height: 25px;
+        font-size: 16px;
+        text-align: justify;
+        color: var(--text-black-700);
+      }
+
+      .service .service-item {
+        margin-bottom: 20px;
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+      }
+
+      .service .service-item .service-item-inner {
+        background-color: var(--bg-black-100);
+        border: 1px solid var(--bg-black-50);
+        border-radius: 10px;
+        padding: 30px 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .service .service-item .service-item-inner:hover {
+        box-shadow: 0 0 20px rgb(48, 46, 77, 0.15);
+      }
+
+      .service-item-inner .icon {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        display: block;
+        margin: 0 auto 30px;
+        text-align: center;
+      }
+
+      .icon .bx {
+        font-size: 40px;
+        line-height: 60px;
+        color: orangered;
+        transition: all 0.3s ease;
+      }
+
+      .service-item-inner:hover .icon {
+        background: orangered;
+      }
+
+      .service-item-inner:hover .icon .bx {
+        font-size: 25px;
+        color: white;
+      }
+
+      .service-item-inner h4 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: var(--text-black-900);
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+
+      .service-item-inner p {
+        font-size: 16px;
+        color: var(--text-black-700);
+        line-height: 25px;
+      }
+
+      .service .container {
+        padding-bottom: 30px;
+      }
+
+      .Portfolio .Portfolio-heading {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 40px;
+      }
+
+      .Portfolio-heading h2 {
+        color: var(--text-black-900);
+        font-weight: 500;
+      }
+
+      .Portfolio .container {
+        padding-bottom: 40px;
+      }
+
+      .Portfolio .Portfolio-item {
+        flex: 0 0 33.333%;
+        max-width: 33.33%;
+      }
+
+      .Portfolio .Portfolio-item-inner {
+        border: 6px solid var(--bg-black-100);
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      .Portfolio .Portfolio-item-inner .Portfolio-img img {
+        width: 100%;
+        display: block;
+      }
+
+      .contact-title {
+        color: orangered;
+        text-align: center;
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+
+      .contact-sub-title {
+        color: var(--text-black-900);
+        text-align: center;
+        font-size: 15px;
+        margin-bottom: 60px;
+      }
+
+      .contact .contact-info-item {
+        flex: 0 0 25%;
+        max-width: 25%;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .contact .contact-info-item .icon {
+        display: inline-block;
+      }
+
+      .contact-info-item .icon .bx {
+        font-size: 25px;
+        color: orangered;
+      }
+
+      .contact-info-item h4 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-black-900);
+        text-transform: capitalize;
+        margin: 15px 0 5px;
+      }
+
+      .contact-info-item p {
+        font-size: 16px;
+        line-height: 25px;
+        color: var(--text-black-700);
+        font-weight: 400;
+      }
+
+      .contact .contact-form {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .contact-form .col-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+
+      .contact-form .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .contact .contact-form .form-item {
+        margin-bottom: 30px;
+      }
+
+      .contact .contact-form .form-item .form-control {
+        width: 100%;
+        height: 50px;
+        border-radius: 25px;
+        background: var(--bg-black-100);
+        border: 1px solid var(--bg-black-50);
+        padding: 10px 25px;
+        font-size: 16px;
+        color: var(--text-black-700);
+        transition: all 0.3s ease;
+      }
+
+      .contact .contact-form .form-item .form-control:focus {
+        box-shadow: 0 0 20px rgb(48, 46, 77, 0.15);
+      }
+
+      .contact .contact-form .form-item textarea.form-control {
+        height: 140px;
+      }
+
+      .contact .contact-form .btn {
+        height: 50px;
+        padding: 0 50px;
+      }
+      @media (max-width: 1199px) {
+        .section .container
+        {
+          padding-top:70px ;
+        }
+        .aside {
+          left: -270px;
+        }
+        .aside .open{
+          left:0 ;
+        }
+        .aside .nav-toggler {
+          display: flex;
+          left: 30px;
+        }
+        .aside .nav-toggler .open{
+          left: 300px;
+        }
+        .section{
+          left:0;
+        }
+        .section .open{
+          left: 270px;
+        }
+        .about .about-content .personal-info .info-item p span {
+          display: block;
+          margin-left: 0;
+        }
+      }
+
+      @media (max-width: 991px) {
+        .contact .contact-info-item,
+        .Portfolio .Portfolio-item,
+        .service .service-item {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+
+        .home .home-info {
+          flex: 0 0 50%;
+          max-width: 50%;
+        }
+
+        .home .home-img {
+          display: none;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .contact .contact-form .col-6,
+        .contact .contact-info-item,
+        .Portfolio .Portfolio-item,
+        .service .service-item,
+        .about .about-content .hobbies,
+        .about .about-content .edcation,
+        .about .about-content .skills,
+        .about .about-content .personal-info {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+</style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="aside">
+        <div class="logo">
+          <a hraf="#"><span>A</span>kal</a>
+        </div>
+        <div class="nav-toggler">
+          <span></span>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="#home" class="active"><i class="bx bxs-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#about"><i class="bx bxs-user-circle"></i>About</a>
+          </li>
+          <li>
+            <a href="#service"><i class="bx bx-list-ul"></i>Services</a>
+          </li>
+          <li>
+            <a href="#Portfolio"><i class="bx bx-briefcase"></i>Portfolio</a>
+          </li>
+          <li>
+            <a href="#contact"><i class="bx bxs-chat"></i>Contact</a>
+          </li>
+        </ul>
+      </div>
+    <div class="main-content">
+      <section class="home active section" id="home">
+        <div class="container">
+          <div class="row">
+            <div class="home-info padd-15">
+              <h3 class="hello">
+                Hello,my name is <span class="name">Akalya</span>
+              </h3>
+              <h3 class="my-profession">
+                I'm a <span class="typing">Full Stack Python Developer</span>
+              </h3>
+              <p>
+                Full-Stack Developer with Proficiency in
+                HTML,CSS,JavaScript,Python,SQL.
+              </p>
+              <a href="#" class="btn">Download CV</a>
+            </div>
+            <div class="home-img padd-15">
+              <img
+                src="C:\Users\AKALYA\OneDrive\Desktop\2 portfolio\images\ak.jpg"
+                alt=""/>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="about section" id="about">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>About Me</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="about-content padd-15">
+              <div class="row">
+                <div class="about-text padd-15">
+                  <h3>
+                    I'm Akalya and <span>Full Stack Python Developer</span>
+                  </h3>
+                  <p>
+                    <b>
+                      Detail-oriented and highly motivated MCA graduate with a
+                      strong foundation in web development, Python, and SQL.
+                      Seeking an entry-level position to leverage my technical
+                      skills and contribute to the success of a dynamic
+                      organization.</b>
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="personal-info padd-15">
+                  <div class="row">
+                    <div class="info-item padd-15">
+                      <p>Brithday:<span>26 Sep 2002</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Age:<span>21</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Website:<span>www.com</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Email:<span>akalyasiva26@gmail.com</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Degree:<span>MCA</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Phone Number:<span>9345012070</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>City:<span>PUDUKKOTTAI</span></p>
+                    </div>
+                    <div class="info-item padd-15">
+                      <p>Sex:<span>Female</span></p>
+                    </div>
+                  </div>
+                    <div class="row">
+                      <div class="button padd-15">
+                        
+                        <a href="#contact" data-section-index="1" class="btn hire-me">Hire Me</a>
+                      </div>
+                    </div>
+                  </div>
+                <div class="skills padd-15">
+                  <div class="row">
+                    <div class="skill-item padd-15">
+                      <h5>HTML</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width: 86%"></div>
+                        <div class="skill-percent">86%</div>
+                      </div>
+                    </div>
+                    <div class="skill-item padd-15">
+                      <h5>CSS</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width: 76%"></div>
+                        <div class="skill-percent">76%</div>
+                      </div>
+                    </div>
+                    <div class="skill-item padd-15">
+                      <h5>Javascript</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width:70%"></div>
+                        <div class="skill-percent">70%</div>
+                      </div>
+                    </div>
+                    <div class="skill-item padd-15">
+                      <h5>Bootstrap</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width:66%"></div>
+                        <div class="skill-percent">66%</div>
+                      </div>
+                    </div>
+                    <div class="skill-item padd-15">
+                      <h5>Python</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width:81%"></div>
+                        <div class="skill-percent">81%</div>
+                      </div>
+                    </div>
+                    <div class="skill-item padd-15">
+                      <h5>Git</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width:56%"></div>
+                        <div class="skill-percent">56%</div>
+                      </div>
+                    </div>
+                    <div class="skill-item padd-15">
+                      <h5>SQL</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width: 50%"></div>
+                        <div class="skill-percent">50%</div>
+                      </div>
+                    </div>
+                    <div class="skill-item padd-15">
+                      <h5>MYSQL</h5>
+                      <div class="progress">
+                        <div class="progress-in" style="width:70%"></div>
+                        <div class="skill-percent">70%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="edcation padd-15">
+                  <h3 class="title">Education</h3>
+                  <div class="row">
+                    <div class="timeline-box padd-15">
+                      <div class="timeline shadow-dark">
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="bx bxs-calendar"></i>2022-2024
+                          </h3>
+                          <h4 class="timeline-title">
+                            Master of Computer Application
+                          </h4>
+                          <p class="timeline-text">
+                            Bharathithasan University
+                            Trichy-<b>Percentage:</b>72%
+                          </p>
+                        </div>
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="bx bxs-calendar"></i>2019-2022
+                          </h3>
+                          <h4 class="timeline-title">
+                            Bachelor of Computer Science
+                          </h4>
+                          <p class="timeline-text">
+                            Cauvery College for women, Autonomous,
+                            Tiruchirappalli,Tamilnadu-
+                            <b>Percentage:</b>79%
+                          </p>
+                        </div>
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="bx bxs-calendar"></i>2017-2019
+                          </h3>
+                          <h4 class="timeline-title">H.S.C</h4>
+                          <p class="timeline-text">
+                            Government girls higher sec.school, State board,
+                            Pudukkotai, Tamilnadu-<b>Percentage:</b>53%
+                          </p>
+                        </div>
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h3 class="timeline-date">
+                            <i class="bx bxs-calendar"></i>2017
+                          </h3>
+                          <h4 class="timeline-title">S.S.L.C</h4>
+                          <p class="timeline-text">
+                            Government girls higher sec.school, State board,
+                            Pudukkoati, Tamilnadu-
+                            <b>Percentage:</b>81%
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hobbies padd-15">
+                  <h3 class="title">Hobbies</h3>
+                  <div class="row">
+                    <div class="timeline-box padd-15">
+                      <div class="timeline shadow-dark">
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h4 class="timeline-title">
+                            CO-CURRICULAR ACTIVITIES
+                          </h4>
+                          <p class="timeline-text">
+                            <b>
+                              <i class="bx bx-right-arrow-alt"></i> Sports
+                              Volunteering<br />
+                              <i class="bx bx-right-arrow-alt"></i> Video
+                              Editing<br />
+                              <i class="bx bx-right-arrow-alt"></i>
+                              Photoshop<br />
+                              <i class="bx bx-right-arrow-alt"></i> Dance<br />
+                            </b>
+                          </p>
+                        </div>
+                        <div class="timeline-item">
+                          <div class="circle-dot"></div>
+                          <h4 class="timeline-title">PERSONAL TRAITS</h4>
+                          <p class="timeline-text">
+                            <b>
+                              <i class="bx bx-right-arrow-alt"></i> Time
+                              Management<br />
+                              <i class="bx bx-right-arrow-alt"></i> Flexbible
+                              <br />
+                              <i class="bx bx-right-arrow-alt"></i> And
+                              Determined<br />
+                              <i class="bx bx-right-arrow-alt"></i> Team
+                              collaboration<br />
+                            </b>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="service section" id="service">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Services</h2>
+            </div>       
+          </div>
+          <div class="row">
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="bx bx-mobile"></i>
+                </div>
+                <h4>Full stack Python Developer</h4>
+                <p>
+                  <b>Entry-Level Full Stack Developer:</b>This is a
+                  straightforward option that clearly states you're a fresher
+                  and interested in a full-stack development role.
+                </p>
+              </div>
+            </div>
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="bx bx-laptop"></i>
+                </div>
+                <h4>Full stack Python Developer</h4>
+                <p>
+                  <b>Entry-Level Full Stack Developer:</b>This is a
+                  straightforward option that clearly states you're a fresher
+                  and interested in a full-stack development role.
+                </p>
+              </div>
+            </div>
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="bx bx-palette"></i>
+                </div>
+                <h4>Full stack Python Developer</h4>
+                <p>
+                  <b>Entry-Level Full Stack Developer:</b>This is a
+                  straightforward option that clearly states you're a fresher
+                  and interested in a full-stack development role.
+                </p>
+              </div>
+            </div>
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="bx bx-code"></i>
+                </div>
+                <h4>Full stack Python Developer</h4>
+                <p>
+                  <b>Entry-Level Full Stack Developer:</b>This is a
+                  straightforward option that clearly states you're a fresher
+                  and interested in a full-stack development role.
+                </p>
+              </div>
+            </div>
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="bx bx-search"></i>
+                </div>
+                <h4>Full stack Python Developer</h4>
+                <p>
+                  <b>Entry-Level Full Stack Developer:</b>This is a
+                  straightforward option that clearly states you're a fresher
+                  and interested in a full-stack development role.
+                </p>
+              </div>
+            </div>
+            <div class="service-item padd-15">
+              <div class="service-item-inner">
+                <div class="icon">
+                  <i class="bx bxl-deezer"></i>
+                </div>
+                <h4>Full stack Python Developer</h4>
+                <p>
+                  <b>Entry-Level Full Stack Developer:</b>This is a
+                  straightforward option that clearly states you're a fresher
+                  and interested in a full-stack development role.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="Portfolio section" id="Portfolio">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Portfolio</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="Portfolio-heading padd-15">
+              <h2>My Last Projects:</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="Portfolio-item padd-15">
+              <div class="Portfolio-item-inner shadow-dark">
+                <div class="Portfolio-img">
+                  <img
+                    src="images/library.jpg"
+                    alt="">
+                </div>
+              </div>
+            </div>
+            <div class="Portfolio-item padd-15">
+              <div class="Portfolio-item-inner shadow-dark">
+                <div class="Portfolio-img">
+                  <img
+                    src="images/morni.jpeg"
+                    alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact section" id="contact">
+        <div class="container">
+          <div class="row">
+            <div class="section-title padd-15">
+              <h2>Contact Me</h2>
+            </div>
+          </div>
+          <h3 class="contact-title padd-15">Have you Any Question ?</h3>
+          <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICS</h4>
+          <div class="row">
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="bx bx-phone-call"></i>
+              </div>
+              <h4>Call Us On</h4>
+              <p>+91-9345012070</p>
+            </div>
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="bx bx-category"></i>
+              </div>
+              <h4>Category</h4>
+              <p>I am fresher-2024</p>
+            </div>
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="bx bx-envelope"></i>
+              </div>
+              <h4>Gmail</h4>
+              <p>akalyasiva26@gmail.com</p>
+            </div>
+            <div class="contact-info-item padd-15">
+              <div class="icon">
+                <i class="bx bx-globe"></i>
+              </div>
+              <h4>Website</h4>
+              <p>https://github.com/MSAkalyaSivanathan</p>
+            </div>
+          </div>
+          <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
+          <h4 class="contact-sub-title padd-15">
+            I'M VERY RESPOSIVE TO MESSAGES
+          </h4>
+          <div class="row">
+            <div class="contact-form padd-15">
+              <div class="row">
+                <div class="form-item col-6 padd-15">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Name"
+                    />
+                  </div>
+                </div>
+                <div class="form-item col-6 padd-15">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-item col-12 padd-15">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Subject"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-item col-12 padd-15">
+                  <div class="form-group">
+                    <textarea
+                      name=""
+                      class="form-control"
+                      id=""
+                      placeholder="Message"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-item col-12 padd-15">
+                  <button type="submit" class="btn">Send Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="style-switcher">
+      <div class="style-switcher-toggler s-icon">
+        <i class="fa fa-cog fa-spin" style="font-size:24px"></i>
+      </div>
+      <div>
+        <div class="day-night s-icon">
+          <i class="fas fa-moon"></i>
+        </div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+          <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+          <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+          <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+          <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+          <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+        </div>
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="script.js"></script>
+      </body>
+</html>
